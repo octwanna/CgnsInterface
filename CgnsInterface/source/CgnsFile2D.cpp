@@ -5,17 +5,16 @@ CgnsFile2D::CgnsFile2D(const Grid& grid, const std::string& folderPath) :
 	this->coordinateIndices.resize(3);
 	this->sectionIndices.resize(5);
 	this->boundaryIndices.resize(4);
-}
-
-void CgnsFile2D::create() {
 	this->numberOfNodes    = this->grid.coordinates.size();
 	this->numberOfElements = this->grid.quadrilateralConnectivity.size();
 	this->cellDimension    = this->grid.dimension;
-
 	std::string folderName = this->folderPath + std::string("/") + std::to_string(numberOfNodes) + std::string("n_") + std::to_string(numberOfElements) + "e/"; createDirectory(folderName);
 	this->fileName = folderName + std::string("Grid.cgns");
 
 	if (cg_open(this->fileName.c_str(), CG_MODE_WRITE, &this->fileIndex)) cg_error_exit();
+}
+
+void CgnsFile2D::writeBase() {
 	if (cg_base_write(this->fileIndex, this->baseName.c_str(), this->cellDimension, this->physicalDimension, &this->baseIndex)) cg_error_exit();
 }
 

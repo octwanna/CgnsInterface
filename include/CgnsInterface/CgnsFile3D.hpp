@@ -20,7 +20,7 @@ class CgnsFile3D : public CgnsFile {
 		~CgnsFile3D();
 
 	private:
-		void create() override;
+		void writeBase() override;
 		void writeZone() override;
 		void writeCoordinates() override;
 		void writeSections() override;

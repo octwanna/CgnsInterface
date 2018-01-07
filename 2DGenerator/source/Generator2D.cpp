@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	grid.coordinates = nodes; 
 	grid.dimension = 2;
 
-	CgnsFile2D cgnsFile2D(grid, "./"); cgnsFile2D.initialize(); 
+	CgnsFile2D cgnsFile2D(grid, "/home/felipe/Downloads/"); cgnsFile2D.initialize(); 
 	
 	std::vector<double> temperatures(numberOfNodesX*numberOfNodesY);
 	for (int i = 0; i < temperatures.size(); i++) temperatures[i] = sin(PI*nodes[i][0]) * sinh(PI*nodes[i][1]) / sinh(PI);

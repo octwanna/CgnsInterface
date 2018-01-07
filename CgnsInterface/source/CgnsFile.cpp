@@ -5,7 +5,7 @@ CgnsFile::CgnsFile(const Grid& grid, const std::string& folderPath) : grid(grid)
 }
 
 void CgnsFile::initialize() {
-	this->create();
+	this->writeBase();
 	this->writeZone();
 	this->writeCoordinates();
 	this->writeSections();

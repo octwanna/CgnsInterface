@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
 	grid.coordinates = nodes; 
 	grid.dimension = 3;
 
-	CgnsFile3D cgnsFile3D(grid, "./"); cgnsFile3D.initialize(); 
+	CgnsFile3D cgnsFile3D(grid, "/home/felipe/Downloads/"); cgnsFile3D.initialize(); 
 	
 	std::vector<double> density(numberOfNodesX*numberOfNodesY*numberOfNodesZ);
 	for (int i = 0; i < density.size(); i++) density[i] = double(i*i);
