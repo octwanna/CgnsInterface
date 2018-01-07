@@ -1,0 +1,26 @@
+{
+	"folders":
+	[
+		{
+			"path": "./"
+		}
+	],
+	"settings":
+    {
+        "sublimegdb_executables":
+        {
+        	"2DGenerator":
+            {
+        		"sublimegdb_workingdir": "/home/felipe/Felipe/cpp/CgnsInterface/2DGenerator/source",
+                "workingdir": "/home/felipe/Felipe/cpp/CgnsInterface/build_sublime/bin/Debug/",
+            	"commandline": "gdb --interpreter=mi ./2DGenerator"
+            },
+            "3DGenerator":
+            {
+                "sublimegdb_workingdir": "/home/felipe/Felipe/cpp/CgnsInterface/3DGenerator/source",
+                "workingdir": "/home/felipe/Felipe/cpp/CgnsInterface/build_sublime/bin/Debug/",
+                "commandline": "gdb --interpreter=mi ./3DGenerator"
+            }
+        }
+    }
+}
