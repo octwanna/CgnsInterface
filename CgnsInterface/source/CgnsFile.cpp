@@ -27,4 +27,17 @@ void CgnsFile::writeField(const std::vector<std::vector<double>>& field, const s
 		if (cg_sol_write(this->fileIndex, this->baseIndex, this->zoneIndex, solutionName.c_str(), Vertex, &this->solutionIndices[i])) cg_error_exit();
 		if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[i], RealDouble, fieldName.c_str(), &field[i][0], &this->fieldIndices[i])) cg_error_exit();
 	}
+    
+    cg_biter_write(this->fileIndex, this->baseIndex, "TimeIterativeValues", timeSteps.size());
+    cg_goto(this->fileIndex, this->baseIndex, "BaseIterativeData_t", 1, "end");
+    
+    cgsize_t nuse = timeSteps.size();
+    cg_array_write("TimeValues", RealDouble, 1, &nuse, &timeSteps[0]);
+    cg_simulation_type_write(this->fileIndex, this->baseIndex, TimeAccurate);
+    
+    //cg_ziter_write(this->fileIndex, this->baseIndex, this->zoneIndex, "ZoneIterativeData");
+    //cg_goto(this->fileIndex, this->baseIndex, "Zone_t", this->zoneIndex, "ZoneIterativeData_t", 1, "end");
+    //idata[0]=32;
+    //idata[1]=3;
+    //cg_array_write("FlowSolutionPointers", Character, 2, idata, solname);
 }
