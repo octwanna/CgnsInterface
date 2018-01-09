@@ -6,7 +6,7 @@
 #include <string>
 
 int main(int argc, char** argv) {
-	if (argc < 4) {
+	if (argc != 4) {
 		throw std::runtime_error("Parameters are the number of nodes in X, Y, Z directions.");
 	}
 	cgsize_t numberOfNodesX = std::stol(argv[1]);
@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
 	
 	std::vector<double> density(numberOfNodesX*numberOfNodesY*numberOfNodesZ);
 	for (int i = 0; i < density.size(); i++) density[i] = double(i*i);
-	cgnsFile3D.writeField(density, "density");
+	cgnsFile3D.writePermanentField(density, "density");
 
 	return 0;
 }

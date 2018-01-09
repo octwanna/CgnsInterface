@@ -17,8 +17,9 @@ class CgnsFile {
 		CgnsFile(const Grid&, const std::string&);
 
 		void initialize();
-		void writeField(const std::vector<double>&, const std::string&);
-		void writeField(const std::vector<std::vector<double>>&, const std::vector<double>&, const std::string&);
+		void writePermanentField(const std::vector<double>&, const std::string&);
+		void writeTimeSteps(const std::vector<double>&);
+		void writeTransientField(const std::vector<std::vector<double>>&, const std::string&);
 
 		~CgnsFile() = default;
 
@@ -31,10 +32,11 @@ class CgnsFile {
 
 		Grid grid;
 		std::string folderPath, baseName, zoneName, fileName;
-		std::vector<int> coordinateIndices, sectionIndices, boundaryIndices, solutionIndices, fieldIndices;
-		int fileIndex, baseIndex, zoneIndex, solutionIndex, fieldIndex;
-		cgsize_t cellDimension, physicalDimension, numberOfNodes, numberOfElements;
+		cgsize_t cellDimension, physicalDimension, numberOfNodes, numberOfElements, numberOfTimeSteps;
 		std::vector<cgsize_t> zoneSizes;
+		std::vector<int> coordinateIndices, sectionIndices, boundaryIndices, solutionIndices;
+		int fileIndex, baseIndex, zoneIndex, solutionIndex, fieldIndex;
+		std::vector<std::vector<int>> fieldsIndices;
 };
 
 #endif
