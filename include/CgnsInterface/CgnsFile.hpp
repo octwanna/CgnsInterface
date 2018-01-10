@@ -34,9 +34,8 @@ class CgnsFile {
 		std::string folderPath, baseName, zoneName, fileName;
 		cgsize_t cellDimension, physicalDimension, numberOfNodes, numberOfElements, numberOfTimeSteps;
 		std::vector<cgsize_t> zoneSizes;
-		std::vector<int> coordinateIndices, sectionIndices, boundaryIndices, solutionIndices;
+		std::vector<int> coordinateIndices, sectionIndices, boundaryIndices, solutionIndices, fieldsIndices;
 		int fileIndex, baseIndex, zoneIndex, solutionIndex, fieldIndex;
-		std::vector<std::vector<int>> fieldsIndices;
 };
 
 #endif

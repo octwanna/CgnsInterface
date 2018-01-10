@@ -35,12 +35,12 @@ void CgnsFile::writeTimeSteps(const std::vector<double>& timeSteps) {
 
 void CgnsFile::writeTransientField(const std::vector<std::vector<double>>& field, const std::string& fieldName) {
 	if (field.size() != this->numberOfTimeSteps) throw std::runtime_error("field and timeSteps sizes mismatch.");
-
-	std::vector<int> indices;
-	for (int i = 0; i < numberOfTimeSteps; i++) {
-		indices.emplace_back(0);
-		if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[i], RealDouble, fieldName.c_str(), &field[i][0], &indices[i])) cg_error_exit();
+	
+	this->fieldsIndices.emplace_back(0);
+	int fieldIndex = this->fieldsIndices.size() - 1;	
+	if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[0], RealDouble, fieldName.c_str(), &field[0][0], &this->fieldsIndices[fieldIndex])) cg_error_exit();
+	
+	for (int i = 1; i < this->numberOfTimeSteps; i++) {
+		if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[i], RealDouble, fieldName.c_str(), &field[i][0], &this->fieldsIndices[fieldIndex])) cg_error_exit();
 	}
-
-	this->fieldsIndices.push_back(indices);	
 }
