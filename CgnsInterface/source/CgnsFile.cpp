@@ -13,8 +13,8 @@ void CgnsFile::initialize() {
 }
 
 void CgnsFile::writePermanentField(const std::vector<double>& field, const std::string& fieldName) {
-	if (cg_sol_write(this->fileIndex, this->baseIndex, this->zoneIndex, fieldName.c_str(), Vertex, &this->solutionIndex)) cg_error_exit();	
-	if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndex, RealDouble, fieldName.c_str(), &field[0], &this->fieldIndex)) cg_error_exit();
+	cg_sol_write(this->fileIndex, this->baseIndex, this->zoneIndex, fieldName.c_str(), Vertex, &this->solutionIndex);
+	cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndex, RealDouble, fieldName.c_str(), &field[0], &this->fieldIndex);
 }
 
 void CgnsFile::writeTimeSteps(const std::vector<double>& timeSteps) {
@@ -23,14 +23,14 @@ void CgnsFile::writeTimeSteps(const std::vector<double>& timeSteps) {
 
 	for (int i = 0; i < this->numberOfTimeSteps; i++) {
 		std::string solutionName = std::string("TimeStep") + std::to_string(i+1);
-		if (cg_sol_write(this->fileIndex, this->baseIndex, this->zoneIndex, solutionName.c_str(), Vertex, &this->solutionIndices[i])) cg_error_exit();
+		cg_sol_write(this->fileIndex, this->baseIndex, this->zoneIndex, solutionName.c_str(), Vertex, &this->solutionIndices[i]);
 	}
     
-    if (cg_biter_write(this->fileIndex, this->baseIndex, "TimeIterativeValues", this->numberOfTimeSteps));
-    if (cg_goto(this->fileIndex, this->baseIndex, "BaseIterativeData_t", 1, "end"));
+    cg_biter_write(this->fileIndex, this->baseIndex, "TimeIterativeValues", this->numberOfTimeSteps);
+    cg_goto(this->fileIndex, this->baseIndex, "BaseIterativeData_t", 1, "end");
 
-    if (cg_array_write("TimeValues", RealDouble, 1, &this->numberOfTimeSteps, &timeSteps[0]));
-    if (cg_simulation_type_write(this->fileIndex, this->baseIndex, TimeAccurate));
+    cg_array_write("TimeValues", RealDouble, 1, &this->numberOfTimeSteps, &timeSteps[0]);
+    cg_simulation_type_write(this->fileIndex, this->baseIndex, TimeAccurate);
 }
 
 void CgnsFile::writeTransientField(const std::vector<std::vector<double>>& field, const std::string& fieldName) {
@@ -38,9 +38,9 @@ void CgnsFile::writeTransientField(const std::vector<std::vector<double>>& field
 	
 	this->fieldsIndices.emplace_back(0);
 	int fieldIndex = this->fieldsIndices.size() - 1;	
-	if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[0], RealDouble, fieldName.c_str(), &field[0][0], &this->fieldsIndices[fieldIndex])) cg_error_exit();
+	cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[0], RealDouble, fieldName.c_str(), &field[0][0], &this->fieldsIndices[fieldIndex]);
 	
 	for (int i = 1; i < this->numberOfTimeSteps; i++) {
-		if (cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[i], RealDouble, fieldName.c_str(), &field[i][0], &this->fieldsIndices[fieldIndex])) cg_error_exit();
+		cg_field_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->solutionIndices[i], RealDouble, fieldName.c_str(), &field[i][0], &this->fieldsIndices[fieldIndex]);
 	}
 }

@@ -63,7 +63,7 @@ set (BOOST_VERSION "1.65.1")
 set (CGNS_VERSION  "3.3.0" )
 
 set (BOOST_ROOT $ENV{BOOST_DIR}/${BUILD_TYPE_OUTPUT_DIRECTORY}/${LIBRARY_TYPE_OUTPUT_DIRECTORY})
-set (Components_Boost filesystem unit_test_framework test_exec_monitor)
+set (Components_Boost filesystem unit_test_framework test_exec_monitor timer chrono)
 set (Boost_USE_MULTITHREADED ON)
 find_package (Boost ${BOOST_VERSION} COMPONENTS ${Components_Boost} REQUIRED)
 if (Boost_FOUND)
