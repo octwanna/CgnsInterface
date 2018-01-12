@@ -48,8 +48,8 @@ void CgnsFile3D::writeSections() {
 
 	for (int i = 0; i < grid.boundaries.size(); i++) {
 		elementStart = elementEnd + 1;
-		elementEnd = elementStart + grid.boundaries[i].quadrilateralConnectivity.size() - 1;
-		connectivities = determine_array_1d(grid.boundaries[i].quadrilateralConnectivity);
+		elementEnd = elementStart + grid.boundaries[i].quadrangleConnectivity.size() - 1;
+		connectivities = determine_array_1d(grid.boundaries[i].quadrangleConnectivity);
 		cg_section_write(this->fileIndex, this->baseIndex, this->zoneIndex, this->grid.boundaries[i].name.c_str(), QUAD_4, elementStart, elementEnd, this->zoneSizes[2], connectivities, &this->sectionIndices[i+1]);
 		delete connectivities;
 	}

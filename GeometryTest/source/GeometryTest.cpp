@@ -3,7 +3,7 @@
 #include <BoostInterface/Test.hpp>
 #include <Geometry/Node.hpp>
 #include <Geometry/3D/Hexahedron.hpp>
-#include <Geometry/2D/Quadrilateral.hpp>
+#include <Geometry/2D/Quadrangle.hpp>
 
 #define TOLERANCE 1e-12
 
@@ -220,10 +220,10 @@ TestCase(Hexahedra) {
 
 TestCase(WestBoundary) {
 	Boundary boundary = this->grid.boundaries[0];
-	checkEqual(boundary.quadrilateralConnectivity[0][0],  1); checkEqual(boundary.quadrilateralConnectivity[0][1], 10); checkEqual(boundary.quadrilateralConnectivity[0][2], 13); checkEqual(boundary.quadrilateralConnectivity[0][3],  4);
-	checkEqual(boundary.quadrilateralConnectivity[1][0],  4); checkEqual(boundary.quadrilateralConnectivity[1][1], 13); checkEqual(boundary.quadrilateralConnectivity[1][2], 16); checkEqual(boundary.quadrilateralConnectivity[1][3],  7);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 10); checkEqual(boundary.quadrilateralConnectivity[2][1], 19); checkEqual(boundary.quadrilateralConnectivity[2][2], 22); checkEqual(boundary.quadrilateralConnectivity[2][3], 13);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 13); checkEqual(boundary.quadrilateralConnectivity[3][1], 22); checkEqual(boundary.quadrilateralConnectivity[3][2], 25); checkEqual(boundary.quadrilateralConnectivity[3][3], 16);
+	checkEqual(boundary.quadrangleConnectivity[0][0],  1); checkEqual(boundary.quadrangleConnectivity[0][1], 10); checkEqual(boundary.quadrangleConnectivity[0][2], 13); checkEqual(boundary.quadrangleConnectivity[0][3],  4);
+	checkEqual(boundary.quadrangleConnectivity[1][0],  4); checkEqual(boundary.quadrangleConnectivity[1][1], 13); checkEqual(boundary.quadrangleConnectivity[1][2], 16); checkEqual(boundary.quadrangleConnectivity[1][3],  7);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 10); checkEqual(boundary.quadrangleConnectivity[2][1], 19); checkEqual(boundary.quadrangleConnectivity[2][2], 22); checkEqual(boundary.quadrangleConnectivity[2][3], 13);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 13); checkEqual(boundary.quadrangleConnectivity[3][1], 22); checkEqual(boundary.quadrangleConnectivity[3][2], 25); checkEqual(boundary.quadrangleConnectivity[3][3], 16);
 
 	checkClose(nodes[boundary.nodeIndices[0]-1][0], 0.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][0], 0.0, TOLERANCE);
@@ -238,10 +238,10 @@ TestCase(WestBoundary) {
 
 TestCase(EastBoundary) {
 	Boundary boundary = this->grid.boundaries[1];
-	checkEqual(boundary.quadrilateralConnectivity[0][0],  3); checkEqual(boundary.quadrilateralConnectivity[0][1],  6); checkEqual(boundary.quadrilateralConnectivity[0][2], 15); checkEqual(boundary.quadrilateralConnectivity[0][3], 12);
-	checkEqual(boundary.quadrilateralConnectivity[1][0],  6); checkEqual(boundary.quadrilateralConnectivity[1][1],  9); checkEqual(boundary.quadrilateralConnectivity[1][2], 18); checkEqual(boundary.quadrilateralConnectivity[1][3], 15);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 12); checkEqual(boundary.quadrilateralConnectivity[2][1], 15); checkEqual(boundary.quadrilateralConnectivity[2][2], 24); checkEqual(boundary.quadrilateralConnectivity[2][3], 21);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 15); checkEqual(boundary.quadrilateralConnectivity[3][1], 18); checkEqual(boundary.quadrilateralConnectivity[3][2], 27); checkEqual(boundary.quadrilateralConnectivity[3][3], 24);
+	checkEqual(boundary.quadrangleConnectivity[0][0],  3); checkEqual(boundary.quadrangleConnectivity[0][1],  6); checkEqual(boundary.quadrangleConnectivity[0][2], 15); checkEqual(boundary.quadrangleConnectivity[0][3], 12);
+	checkEqual(boundary.quadrangleConnectivity[1][0],  6); checkEqual(boundary.quadrangleConnectivity[1][1],  9); checkEqual(boundary.quadrangleConnectivity[1][2], 18); checkEqual(boundary.quadrangleConnectivity[1][3], 15);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 12); checkEqual(boundary.quadrangleConnectivity[2][1], 15); checkEqual(boundary.quadrangleConnectivity[2][2], 24); checkEqual(boundary.quadrangleConnectivity[2][3], 21);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 15); checkEqual(boundary.quadrangleConnectivity[3][1], 18); checkEqual(boundary.quadrangleConnectivity[3][2], 27); checkEqual(boundary.quadrangleConnectivity[3][3], 24);
 
 	checkClose(nodes[boundary.nodeIndices[0]-1][0], 1.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][0], 1.0, TOLERANCE);
@@ -256,10 +256,10 @@ TestCase(EastBoundary) {
 
 TestCase(SouthBoundary) {
 	Boundary boundary = this->grid.boundaries[2];
-	checkEqual(boundary.quadrilateralConnectivity[0][0],  1); checkEqual(boundary.quadrilateralConnectivity[0][1],  2); checkEqual(boundary.quadrilateralConnectivity[0][2], 11); checkEqual(boundary.quadrilateralConnectivity[0][3], 10);
-	checkEqual(boundary.quadrilateralConnectivity[1][0],  2); checkEqual(boundary.quadrilateralConnectivity[1][1],  3); checkEqual(boundary.quadrilateralConnectivity[1][2], 12); checkEqual(boundary.quadrilateralConnectivity[1][3], 11);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 10); checkEqual(boundary.quadrilateralConnectivity[2][1], 11); checkEqual(boundary.quadrilateralConnectivity[2][2], 20); checkEqual(boundary.quadrilateralConnectivity[2][3], 19);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 11); checkEqual(boundary.quadrilateralConnectivity[3][1], 12); checkEqual(boundary.quadrilateralConnectivity[3][2], 21); checkEqual(boundary.quadrilateralConnectivity[3][3], 20);
+	checkEqual(boundary.quadrangleConnectivity[0][0],  1); checkEqual(boundary.quadrangleConnectivity[0][1],  2); checkEqual(boundary.quadrangleConnectivity[0][2], 11); checkEqual(boundary.quadrangleConnectivity[0][3], 10);
+	checkEqual(boundary.quadrangleConnectivity[1][0],  2); checkEqual(boundary.quadrangleConnectivity[1][1],  3); checkEqual(boundary.quadrangleConnectivity[1][2], 12); checkEqual(boundary.quadrangleConnectivity[1][3], 11);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 10); checkEqual(boundary.quadrangleConnectivity[2][1], 11); checkEqual(boundary.quadrangleConnectivity[2][2], 20); checkEqual(boundary.quadrangleConnectivity[2][3], 19);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 11); checkEqual(boundary.quadrangleConnectivity[3][1], 12); checkEqual(boundary.quadrangleConnectivity[3][2], 21); checkEqual(boundary.quadrangleConnectivity[3][3], 20);
 
 	checkClose(nodes[boundary.nodeIndices[0]-1][1], 0.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][1], 0.0, TOLERANCE);
@@ -274,10 +274,10 @@ TestCase(SouthBoundary) {
 
 TestCase(NorthBoundary) {
 	Boundary boundary = this->grid.boundaries[3];
-	checkEqual(boundary.quadrilateralConnectivity[0][0],  8); checkEqual(boundary.quadrilateralConnectivity[0][1],  7); checkEqual(boundary.quadrilateralConnectivity[0][2], 16); checkEqual(boundary.quadrilateralConnectivity[0][3], 17);
-	checkEqual(boundary.quadrilateralConnectivity[1][0],  9); checkEqual(boundary.quadrilateralConnectivity[1][1],  8); checkEqual(boundary.quadrilateralConnectivity[1][2], 17); checkEqual(boundary.quadrilateralConnectivity[1][3], 18);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 17); checkEqual(boundary.quadrilateralConnectivity[2][1], 16); checkEqual(boundary.quadrilateralConnectivity[2][2], 25); checkEqual(boundary.quadrilateralConnectivity[2][3], 26);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 18); checkEqual(boundary.quadrilateralConnectivity[3][1], 17); checkEqual(boundary.quadrilateralConnectivity[3][2], 26); checkEqual(boundary.quadrilateralConnectivity[3][3], 27);
+	checkEqual(boundary.quadrangleConnectivity[0][0],  8); checkEqual(boundary.quadrangleConnectivity[0][1],  7); checkEqual(boundary.quadrangleConnectivity[0][2], 16); checkEqual(boundary.quadrangleConnectivity[0][3], 17);
+	checkEqual(boundary.quadrangleConnectivity[1][0],  9); checkEqual(boundary.quadrangleConnectivity[1][1],  8); checkEqual(boundary.quadrangleConnectivity[1][2], 17); checkEqual(boundary.quadrangleConnectivity[1][3], 18);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 17); checkEqual(boundary.quadrangleConnectivity[2][1], 16); checkEqual(boundary.quadrangleConnectivity[2][2], 25); checkEqual(boundary.quadrangleConnectivity[2][3], 26);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 18); checkEqual(boundary.quadrangleConnectivity[3][1], 17); checkEqual(boundary.quadrangleConnectivity[3][2], 26); checkEqual(boundary.quadrangleConnectivity[3][3], 27);
 	
 	checkClose(nodes[boundary.nodeIndices[0]-1][1], 1.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][1], 1.0, TOLERANCE);
@@ -292,10 +292,10 @@ TestCase(NorthBoundary) {
 
 TestCase(BottomBoundary) {
 	Boundary boundary = this->grid.boundaries[4];
-	checkEqual(boundary.quadrilateralConnectivity[0][0], 2); checkEqual(boundary.quadrilateralConnectivity[0][1], 1); checkEqual(boundary.quadrilateralConnectivity[0][2], 4); checkEqual(boundary.quadrilateralConnectivity[0][3], 5);
-	checkEqual(boundary.quadrilateralConnectivity[1][0], 3); checkEqual(boundary.quadrilateralConnectivity[1][1], 2); checkEqual(boundary.quadrilateralConnectivity[1][2], 5); checkEqual(boundary.quadrilateralConnectivity[1][3], 6);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 5); checkEqual(boundary.quadrilateralConnectivity[2][1], 4); checkEqual(boundary.quadrilateralConnectivity[2][2], 7); checkEqual(boundary.quadrilateralConnectivity[2][3], 8);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 6); checkEqual(boundary.quadrilateralConnectivity[3][1], 5); checkEqual(boundary.quadrilateralConnectivity[3][2], 8); checkEqual(boundary.quadrilateralConnectivity[3][3], 9);
+	checkEqual(boundary.quadrangleConnectivity[0][0], 2); checkEqual(boundary.quadrangleConnectivity[0][1], 1); checkEqual(boundary.quadrangleConnectivity[0][2], 4); checkEqual(boundary.quadrangleConnectivity[0][3], 5);
+	checkEqual(boundary.quadrangleConnectivity[1][0], 3); checkEqual(boundary.quadrangleConnectivity[1][1], 2); checkEqual(boundary.quadrangleConnectivity[1][2], 5); checkEqual(boundary.quadrangleConnectivity[1][3], 6);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 5); checkEqual(boundary.quadrangleConnectivity[2][1], 4); checkEqual(boundary.quadrangleConnectivity[2][2], 7); checkEqual(boundary.quadrangleConnectivity[2][3], 8);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 6); checkEqual(boundary.quadrangleConnectivity[3][1], 5); checkEqual(boundary.quadrangleConnectivity[3][2], 8); checkEqual(boundary.quadrangleConnectivity[3][3], 9);
 	
 	checkClose(nodes[boundary.nodeIndices[0]-1][2], 0.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][2], 0.0, TOLERANCE);
@@ -310,10 +310,10 @@ TestCase(BottomBoundary) {
 
 TestCase(TopBoundary) {
 	Boundary boundary = this->grid.boundaries[5];
-	checkEqual(boundary.quadrilateralConnectivity[0][0], 19); checkEqual(boundary.quadrilateralConnectivity[0][1], 20); checkEqual(boundary.quadrilateralConnectivity[0][2], 23); checkEqual(boundary.quadrilateralConnectivity[0][3], 22);
-	checkEqual(boundary.quadrilateralConnectivity[1][0], 20); checkEqual(boundary.quadrilateralConnectivity[1][1], 21); checkEqual(boundary.quadrilateralConnectivity[1][2], 24); checkEqual(boundary.quadrilateralConnectivity[1][3], 23);
-	checkEqual(boundary.quadrilateralConnectivity[2][0], 22); checkEqual(boundary.quadrilateralConnectivity[2][1], 23); checkEqual(boundary.quadrilateralConnectivity[2][2], 26); checkEqual(boundary.quadrilateralConnectivity[2][3], 25);
-	checkEqual(boundary.quadrilateralConnectivity[3][0], 23); checkEqual(boundary.quadrilateralConnectivity[3][1], 24); checkEqual(boundary.quadrilateralConnectivity[3][2], 27); checkEqual(boundary.quadrilateralConnectivity[3][3], 26);
+	checkEqual(boundary.quadrangleConnectivity[0][0], 19); checkEqual(boundary.quadrangleConnectivity[0][1], 20); checkEqual(boundary.quadrangleConnectivity[0][2], 23); checkEqual(boundary.quadrangleConnectivity[0][3], 22);
+	checkEqual(boundary.quadrangleConnectivity[1][0], 20); checkEqual(boundary.quadrangleConnectivity[1][1], 21); checkEqual(boundary.quadrangleConnectivity[1][2], 24); checkEqual(boundary.quadrangleConnectivity[1][3], 23);
+	checkEqual(boundary.quadrangleConnectivity[2][0], 22); checkEqual(boundary.quadrangleConnectivity[2][1], 23); checkEqual(boundary.quadrangleConnectivity[2][2], 26); checkEqual(boundary.quadrangleConnectivity[2][3], 25);
+	checkEqual(boundary.quadrangleConnectivity[3][0], 23); checkEqual(boundary.quadrangleConnectivity[3][1], 24); checkEqual(boundary.quadrangleConnectivity[3][2], 27); checkEqual(boundary.quadrangleConnectivity[3][3], 26);
 	
 	checkClose(nodes[boundary.nodeIndices[0]-1][2], 1.0, TOLERANCE);
 	checkClose(nodes[boundary.nodeIndices[1]-1][2], 1.0, TOLERANCE);
@@ -333,9 +333,9 @@ struct QuadrilateralFixture {
 		this->numberOfNodesX = 3;
 		this->numberOfNodesY = 3;
 		this->nodes = determineNodes(this->numberOfNodesX, this->numberOfNodesY);
-		this->quadrilateral = Quadrilateral(this->numberOfNodesX, this->numberOfNodesY);
-		this->quadrilateral.generateGrid();
-		this->grid = quadrilateral.getGrid();
+		this->quadrangle = Quadrangle(this->numberOfNodesX, this->numberOfNodesY);
+		this->quadrangle.generateGrid();
+		this->grid = quadrangle.getGrid();
 	}
 
 	~QuadrilateralFixture() = default;
@@ -343,7 +343,7 @@ struct QuadrilateralFixture {
 	cgsize_t numberOfNodesX;
 	cgsize_t numberOfNodesY;
 	std::vector<std::vector<double>> nodes;
-	Quadrilateral quadrilateral;
+	Quadrangle quadrangle;
 	Grid grid;
 };
 
@@ -390,7 +390,7 @@ TestCase(Nodes2D) {
 }
 
 TestCase(Quadrilaterals) {
-	auto connectivities = this->grid.quadrilateralConnectivity;
+	auto connectivities = this->grid.quadrangleConnectivity;
 
 	checkEqual(connectivities[0][0],  1);
 	checkEqual(connectivities[0][1],  2);

@@ -47,11 +47,11 @@ void Hexahedron::generateBoundaries() {
 		for (cgsize_t j = 0; j < this->numberOfNodesY-1; j++) {
 			cgsize_t westIndex = j*x + k*x*y;
 			std::vector<cgsize_t> temporary = this->grid.hexahedronConnectivity[westIndex];
-			westBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[0], temporary[4], temporary[7], temporary[3]});
+			westBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[0], temporary[4], temporary[7], temporary[3]});
 
 			cgsize_t eastIndex = this->numberOfNodesX - 2 + j*y + k*x*y;
 			temporary = this->grid.hexahedronConnectivity[eastIndex];
-			eastBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[1], temporary[2], temporary[6], temporary[5]});			
+			eastBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[1], temporary[2], temporary[6], temporary[5]});			
 		}
 	}
 	x++; y++;
@@ -75,11 +75,11 @@ void Hexahedron::generateBoundaries() {
 		for (cgsize_t i = 0; i < this->numberOfNodesX-1; i++) {
 			cgsize_t southIndex = i + k*x*y;
 			std::vector<cgsize_t> temporary = this->grid.hexahedronConnectivity[southIndex];
-			southBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[0], temporary[1], temporary[5], temporary[4]});
+			southBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[0], temporary[1], temporary[5], temporary[4]});
 
 			cgsize_t northIndex = i + x*(this->numberOfNodesY-2) + k*x*y;
 			temporary = this->grid.hexahedronConnectivity[northIndex];
-			northBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[2], temporary[3], temporary[7], temporary[6]});
+			northBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[2], temporary[3], temporary[7], temporary[6]});
 		}
 	}
 	x++; y++;
@@ -104,11 +104,11 @@ void Hexahedron::generateBoundaries() {
 		for (cgsize_t i = 0; i < this->numberOfNodesX-1; i++) {
 			cgsize_t bottomIndex = i + j*x;
 			std::vector<cgsize_t> temporary = this->grid.hexahedronConnectivity[bottomIndex];
-			bottomBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[1], temporary[0], temporary[3], temporary[2]});
+			bottomBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[1], temporary[0], temporary[3], temporary[2]});
 
     		cgsize_t topIndex = i + j*x + x*y*z;
 			temporary = this->grid.hexahedronConnectivity[topIndex];
-			topBoundary.quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>{temporary[4], temporary[5], temporary[6], temporary[7]});
+			topBoundary.quadrangleConnectivity.emplace_back(std::vector<cgsize_t>{temporary[4], temporary[5], temporary[6], temporary[7]});
     	}
     }
     x++; y++; z+=2;

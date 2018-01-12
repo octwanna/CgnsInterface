@@ -1,5 +1,5 @@
 #include <Geometry/Node.hpp>
-#include <Geometry/2D/Quadrilateral.hpp>
+#include <Geometry/2D/Quadrangle.hpp>
 #include <CgnsInterface/CgnsFile2D.hpp>
 
 #include <stdexcept>
@@ -16,8 +16,8 @@ int main(int argc, char** argv) {
 	cgsize_t numberOfNodesY = std::stol(argv[2]);
 
 	std::vector<std::vector<double>> nodes = determineNodes(numberOfNodesX, numberOfNodesY);
-	Quadrilateral quadrilateral(numberOfNodesX, numberOfNodesY); quadrilateral.generateGrid();
-	Grid grid = quadrilateral.getGrid();
+	Quadrangle quadrangle(numberOfNodesX, numberOfNodesY); quadrangle.generateGrid();
+	Grid grid = quadrangle.getGrid();
 	grid.coordinates = nodes; 
 	grid.dimension = 2;
 

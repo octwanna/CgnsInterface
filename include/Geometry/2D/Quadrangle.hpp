@@ -1,16 +1,16 @@
-#ifndef GEOMETRY_QUADRILATERAL_HPP
-#define GEOMETRY_QUADRILATERAL_HPP
+#ifndef GEOMETRY_QUADRANGLE_HPP
+#define GEOMETRY_QUADRANGLE_HPP
 
 #include <Geometry/Node.hpp>
 #include <Geometry/Geometry.hpp>
 #include <Grid/Grid.hpp>
 
-class Quadrilateral : public Geometry {
+class Quadrangle : public Geometry {
 	public:
-		Quadrilateral() = default;
-		Quadrilateral(const cgsize_t&, const cgsize_t&);
+		Quadrangle() = default;
+		Quadrangle(const cgsize_t&, const cgsize_t&);
 
-		~Quadrilateral() = default;
+		~Quadrangle() = default;
 
 	private:
 		void calculateNumberOfNodes() override;

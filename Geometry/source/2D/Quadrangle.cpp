@@ -1,22 +1,22 @@
-#include <Geometry/2D/Quadrilateral.hpp>
+#include <Geometry/2D/Quadrangle.hpp>
 
-Quadrilateral::Quadrilateral(const cgsize_t& numberOfNodesX, const cgsize_t& numberOfNodesY) : Geometry(numberOfNodesX, numberOfNodesY, 0) {
+Quadrangle::Quadrangle(const cgsize_t& numberOfNodesX, const cgsize_t& numberOfNodesY) : Geometry(numberOfNodesX, numberOfNodesY, 0) {
 	this->setConnectivity(4);
 }
 
-void Quadrilateral::calculateNumberOfNodes() {
+void Quadrangle::calculateNumberOfNodes() {
 	this->numberOfNodes = this->numberOfNodesX * this->numberOfNodesY;
 }
 
-void Quadrilateral::calculateNumberOfElements() {
+void Quadrangle::calculateNumberOfElements() {
 	this->numberOfElements = (this->numberOfNodesX-1) * (this->numberOfNodesY-1);
 }
 
-void Quadrilateral::generateConnectivities() {
-    std::vector<std::vector<cgsize_t>> quadrilateralConnectivity;
+void Quadrangle::generateConnectivities() {
+    std::vector<std::vector<cgsize_t>> quadrangleConnectivity;
 	for (cgsize_t i = 0; i < this->numberOfNodesY-1; i++) {
 		for (cgsize_t j = 0; j < this->numberOfNodesX-1; j++) {
-			quadrilateralConnectivity.emplace_back(std::vector<cgsize_t>({
+			quadrangleConnectivity.emplace_back(std::vector<cgsize_t>({
 				this->indices[i*this->numberOfNodesX + j], 
 				this->indices[i*this->numberOfNodesX + j + 1], 
 				this->indices[i*this->numberOfNodesX + j + 1 + this->numberOfNodesX], 
@@ -24,10 +24,10 @@ void Quadrilateral::generateConnectivities() {
 			);
 		}
 	}
-	this->grid.quadrilateralConnectivity = std::move(quadrilateralConnectivity);
+	this->grid.quadrangleConnectivity = std::move(quadrangleConnectivity);
 }
 
-void Quadrilateral::generateBoundaries() {
+void Quadrangle::generateBoundaries() {
 	this->grid.boundaries.resize(4);
 
 	Boundary westBoundary; westBoundary.name = "West";

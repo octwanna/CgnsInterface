@@ -6,7 +6,7 @@ CgnsFile2D::CgnsFile2D(const Grid& grid, const std::string& folderPath) :
 	this->sectionIndices.resize(5);
 	this->boundaryIndices.resize(4);
 	this->numberOfNodes    = this->grid.coordinates.size();
-	this->numberOfElements = this->grid.quadrilateralConnectivity.size();
+	this->numberOfElements = this->grid.quadrangleConnectivity.size();
 	this->cellDimension    = this->grid.dimension;
 	std::string folderName = this->folderPath + std::string("/") + std::to_string(numberOfNodes) + std::string("n_") + std::to_string(numberOfElements) + "e/"; createDirectory(folderName);
 	this->fileName = folderName + std::string("Grid.cgns");
@@ -40,7 +40,7 @@ void CgnsFile2D::writeCoordinates() {
 }
 
 void CgnsFile2D::writeSections() {
-	cgsize_t* connectivities = determine_array_1d(grid.quadrilateralConnectivity);
+	cgsize_t* connectivities = determine_array_1d(grid.quadrangleConnectivity);
 	cgsize_t elementStart = 1;
 	cgsize_t elementEnd = numberOfElements;
 	cg_section_write(this->fileIndex, this->baseIndex, this->zoneIndex, "Quadrilateral", QUAD_4, elementStart, elementEnd, zoneSizes[2], connectivities, &sectionIndices[0]);
